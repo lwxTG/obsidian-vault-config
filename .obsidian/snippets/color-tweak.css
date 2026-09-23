@@ -1,0 +1,12 @@
+/* ============================================================
+   Color Tweak —— 界面三色微调（简洁技术文档配色）
+   正文黑色保持；链接改 GitHub 蓝；行内代码改蓝灰
+   主题变量定义在 body.theme-light 等作用域，需 body 级 + !important 覆盖
+   ============================================================ */
+body {
+  --link-color: #0969da !important;
+  --link-color-hover: #0969da !important;
+  --link-color-external: #0969da !important;
+  --internal-link-color: #0969da !important;
+  --text-color-code: #476582 !important;
+}

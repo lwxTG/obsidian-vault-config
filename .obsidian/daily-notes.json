@@ -1,0 +1,4 @@
+{
+  "folder": "work/daily/{{DATE:YYYY}}/{{DATE:MM}}/",
+  "template": "resource/templates/daily_template"
+}

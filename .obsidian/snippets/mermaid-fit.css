@@ -1,0 +1,20 @@
+/*
+ * Mermaid 图表自适应缩放
+ * 效果：图表等比缩放至页面宽度内，完整结构一目了然
+ * 配合 Image Zoom & Drag 插件使用：滚轮放大查看细节
+ */
+
+/* 图表 SVG 适应容器宽度，保持比例 */
+.mermaid svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 阅读模式 & 实时预览模式统一生效 */
+.markdown-rendered .mermaid svg,
+.markdown-source-view .mermaid svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}

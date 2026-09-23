@@ -1,0 +1,168 @@
+/* ============================================================
+   Mermaid Tweak —— 流程图 / 状态图全局美化
+   配合 Blue Topaz 主题使用，让 SVG 图表风格统一、简洁
+
+   原理：覆盖 Mermaid 默认 SVG 节点配色
+   效果：柔和填充 + 细边框 + 圆角感 + 中性色调
+
+   【最终方案】白底蓝边 + basis 平滑曲线：
+   - 节点：纯白底 + 柔和蓝边框
+   - 菱形/起止框：浅蓝底 + GitHub 蓝边
+   - 连线：浅蓝灰 + 圆润端点（curve 用 basis 需在图内 init 指定）
+
+   豁免机制：笔记 frontmatter 加 `cssclasses: [mermaid-native]`
+   则该笔记内所有图表保持 Mermaid 纯原生渲染（用于对比）。
+   ============================================================ */
+
+/* ============================================================
+   调色板 —— 切换方案只需替换下面这组变量
+   当前激活：方案 A（白底蓝边）
+   ============================================================ */
+
+/* ---- 方案 A：白底蓝边（清爽，与 color-tweak 配色统一） ---- */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid {
+  --mm-node-fill: #ffffff;        /* 节点底色：纯白 */
+  --mm-node-stroke: #6e9bd8;      /* 节点边框：柔和蓝 */
+  --mm-node-text: #1f2328;        /* 节点文字：深灰 */
+  --mm-edge-color: #a5b8cc;       /* 连线/箭头：浅蓝灰（弱于节点边框，建立层级） */
+  --mm-cluster-fill: #f8fbfe;     /* 子图底色：几乎透明的极浅蓝 */
+  --mm-cluster-stroke: #c9d8ec;   /* 子图边框：浅蓝灰 */
+  --mm-diamond-fill: #e8f1fb;     /* 菱形判断框：浅蓝 */
+  --mm-diamond-stroke: #5b8ec9;   /* 菱形边框：中等蓝（区别于起止框的深蓝） */
+  --mm-start-fill: #ddf4ff;       /* 起止框：浅蓝 */
+  --mm-start-stroke: #0969da;     /* 起止边框：GitHub 蓝 */
+}
+
+/* ---- 方案 B：Blue Topaz 同色系（蓝调呼应主题） ----
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid {
+  --mm-node-fill: #eef2ff;
+  --mm-node-stroke: #a5b4fc;
+  --mm-node-text: #1e293b;
+  --mm-edge-color: #818cf8;
+  --mm-cluster-fill: #eef2ff;
+  --mm-cluster-stroke: #c7d2fe;
+  --mm-diamond-fill: #c7d2fe;
+  --mm-diamond-stroke: #4f46e5;
+  --mm-start-fill: #dbeafe;
+  --mm-start-stroke: #2563eb;
+}
+---- */
+
+/* ---- 方案 C：极简灰白（零色彩，纯黑白灰） ----
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid {
+  --mm-node-fill: #ffffff;
+  --mm-node-stroke: #d4d4d4;
+  --mm-node-text: #262626;
+  --mm-edge-color: #a3a3a3;
+  --mm-cluster-fill: #fafafa;
+  --mm-cluster-stroke: #e5e5e5;
+  --mm-diamond-fill: #f5f5f5;
+  --mm-diamond-stroke: #737373;
+  --mm-start-fill: #f0f0f0;
+  --mm-start-stroke: #525252;
+}
+---- */
+
+/* ---------- 普通节点（矩形/平行四边形） ---------- */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .node rect,
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .node .shape-wrap {
+  fill: var(--mm-node-fill) !important;
+  stroke: var(--mm-node-stroke) !important;
+  stroke-width: 1.2px !important;
+  rx: 6px !important;
+  ry: 6px !important;
+}
+
+/* 菱形节点（判断/条件） */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .node polygon {
+  fill: var(--mm-diamond-fill) !important;
+  stroke: var(--mm-diamond-stroke) !important;
+  stroke-width: 1.2px !important;
+}
+
+/* 起止节点（圆角胶囊） */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .node .stadium {
+  fill: var(--mm-start-fill) !important;
+  stroke: var(--mm-start-stroke) !important;
+  stroke-width: 1.5px !important;
+}
+
+/* ---------- 节点文字 ---------- */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .node .label foreignObject div,
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .node .label {
+  color: var(--mm-node-text) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+/* ---------- 连线与箭头 ---------- */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .edgePath .path,
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .flowchart-link {
+  stroke: var(--mm-edge-color) !important;
+  stroke-width: 1.5px !important;
+  stroke-linecap: round !important;   /* 线端圆润，更自然 */
+  stroke-linejoin: round !important;   /* 拐角圆润，更自然 */
+}
+
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .arrowheadPath {
+  fill: var(--mm-edge-color) !important;
+  stroke: var(--mm-edge-color) !important;
+}
+
+/* 连线上的文字标签 */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .edgeLabel {
+  color: var(--mm-node-text) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .edgeLabel rect {
+  fill: transparent !important;
+  opacity: 0 !important;
+}
+
+/* ---------- 子图（subgraph / cluster） ---------- */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .cluster rect {
+  fill: var(--mm-cluster-fill) !important;
+  stroke: var(--mm-cluster-stroke) !important;
+  stroke-width: 1px !important;
+  rx: 8px !important;
+  ry: 8px !important;
+}
+
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .cluster text,
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .cluster .label text {
+  fill: var(--mm-node-text) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+
+/* ---------- 状态图专用 ---------- */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .state-group rect {
+  fill: var(--mm-node-fill) !important;
+  stroke: var(--mm-node-stroke) !important;
+  stroke-width: 1.2px !important;
+  rx: 6px !important;
+  ry: 6px !important;
+}
+
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .state-group text {
+  fill: var(--mm-node-text) !important;
+  font-size: 13px !important;
+}
+
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .state-group .divider {
+  stroke: var(--mm-cluster-stroke) !important;
+}
+
+/* 状态图起止圆 */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .state-start,
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid .state-end {
+  fill: var(--mm-start-fill) !important;
+  stroke: var(--mm-start-stroke) !important;
+}
+
+/* ---------- 整体容器 ---------- */
+:is(.markdown-source-view, .markdown-preview-view):not(.mermaid-native) .mermaid svg {
+  font-family: var(--mermaid-font-family) !important;
+}

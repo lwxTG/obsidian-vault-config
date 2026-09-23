@@ -1,0 +1,12 @@
+{
+  "blue-topaz-theme@@background-settings-workplace-background-image": false,
+  "blue-topaz-theme@@background-image-settings-switch": false,
+  "blue-topaz-theme@@bt-bubble-buttons": false,
+  "blue-topaz-theme@@bt-toggle-colorful-folder": false,
+  "blue-topaz-theme@@remove-colorful-highlight-bg": true,
+  "blue-topaz-theme@@bt-colorful-connected-indent-hover": false,
+  "blue-topaz-theme@@font-text-theme": "\"Noto Sans SC\", \"Microsoft YaHei UI\", \"微软雅黑\", \"PingFang SC\", sans-serif",
+  "blue-topaz-theme@@line-height-main": 1.6,
+  "blue-topaz-theme@@justify-align": true,
+  "blue-topaz-theme@@bt-colorful-indentation-lines": true
+}

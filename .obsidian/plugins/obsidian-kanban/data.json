@@ -1,0 +1,14 @@
+{
+  "new-note-template": "resource/templates/kanban_template.md",
+  "new-note-folder": "kanban",
+  "hide-date-display": false,
+  "show-relative-date": true,
+  "hide-date-in-title": true,
+  "tag-colors": [
+    {
+      "tagKey": "",
+      "color": "",
+      "backgroundColor": ""
+    }
+  ]
+}

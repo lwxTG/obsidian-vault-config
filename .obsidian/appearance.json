@@ -1,0 +1,19 @@
+{
+  "cssTheme": "Blue Topaz",
+  "theme": "moonstone",
+  "baseFontSize": 14.5,
+  "showViewHeader": true,
+  "showRibbon": true,
+  "interfaceFontFamily": "",
+  "textFontFamily": "",
+  "monospaceFontFamily": "JetBrains Mono",
+  "nativeMenus": false,
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "mermaid-fit",
+    "home",
+    "kanban",
+    "color-tweak",
+    "mermaid-tweak"
+  ]
+}

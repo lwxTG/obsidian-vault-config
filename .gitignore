@@ -1,0 +1,31 @@
+# Obsidian 易变文件（工作区布局，不入库）
+.obsidian/workspace*.json
+.obsidian/cache/
+
+# 插件运行时状态（自动写入，非人工配置）
+.obsidian/plugins/obsidian-quiet-outline/markdown-states.json
+.obsidian/plugins/recent-files-obsidian/data.json
+
+# 回收站
+.trash/
+
+# Agent 临时文件与状态缓存
+.agents/tmp_*
+.agents/vault-lint-state.json
+.agents/_feishu-*/
+
+# 飞书桥接临时文件
+doc_full.json
+doc_outline.json
+feishu_upload.md
+fetch_output.json
+
+# Agent 会话数据
+.claude/sessions/
+.claudian/sessions/
+
+# 生成产物
+.qoder/specs/
+
+# 改造备份包（独立于 git 的额外保险）
+backup/

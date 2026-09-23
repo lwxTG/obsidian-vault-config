@@ -1,0 +1,144 @@
+/* ============================================================
+   Quiet Notes Lite — 适配 Windows + AnuPpuccin
+
+   基于 https://github.com/andrewchen0623/obsidian-quiet-notes
+   改动：不覆盖全局主题色；修表格首列；补代码块与 Windows 字体
+   密度：compact（略紧凑）
+   ============================================================ */
+
+/* ---------- 正文排版（仅笔记区域） ---------- */
+.markdown-source-view.mod-cm6,
+.markdown-rendered {
+  --font-text-size: 14.5px;
+  --font-text: "Microsoft YaHei UI", "微软雅黑", "PingFang SC",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-monospace: "Cascadia Code", "Consolas", "Microsoft YaHei UI", monospace;
+  --line-height-normal: 1.65;
+  --p-spacing: 1.25em;
+  --h1-size: 1.5em;
+  --h1-weight: 700;
+  --h2-size: 1.22em;
+  --h2-weight: 600;
+  --h3-size: 1.08em;
+  --h3-weight: 600;
+  --h4-size: 1em;
+  --h4-weight: 600;
+  --heading-spacing: 1.45em;
+  --tbl-border: var(--background-modifier-border, #e6e6e6);
+  --tbl-header-bg: var(--background-modifier-hover, #f3f3f3);
+  --text-highlight-bg: var(--text-highlight-bg, #ffffb4);
+}
+
+/* ---------- 编辑器行距 ---------- */
+.markdown-source-view.mod-cm6 .cm-line {
+  padding-top: 0.18em;
+  padding-bottom: 0.18em;
+}
+
+/* ---------- 中文字距 ---------- */
+.markdown-source-view.mod-cm6 .cm-line,
+.markdown-rendered p,
+.markdown-rendered li,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4 {
+  letter-spacing: 0.02em;
+}
+
+/* ---------- 下划线 ---------- */
+.markdown-rendered u,
+.markdown-source-view u {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* ---------- 行内代码 ---------- */
+.markdown-rendered code,
+.markdown-source-view .cm-inline-code {
+  font-size: 0.9em;
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+}
+
+/* ---------- 代码块 ---------- */
+.markdown-rendered pre,
+.markdown-source-view .HyperMD-codeblock {
+  line-height: 1.5;
+  font-size: 0.86em;
+}
+
+.markdown-rendered pre code {
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ---------- 表格 ---------- */
+.markdown-rendered table,
+.markdown-source-view table {
+  border-collapse: collapse;
+  border: 1px solid var(--tbl-border);
+}
+
+.markdown-rendered th,
+.markdown-rendered td,
+.markdown-source-view th,
+.markdown-source-view td {
+  font-size: 0.9em !important;
+  padding: 5px 10px !important;
+  border: 1px solid var(--tbl-border);
+  line-height: 1.5;
+}
+
+.markdown-rendered th,
+.markdown-source-view th {
+  background: var(--tbl-header-bg) !important;
+  font-weight: 600;
+}
+
+.markdown-rendered td:focus,
+.markdown-rendered th:focus,
+.markdown-source-view td:focus-within,
+.markdown-source-view th:focus-within {
+  box-shadow: inset 0 0 0 1px var(--text-normal);
+  outline: none;
+}
+
+/* ---------- 分隔线 ---------- */
+.markdown-rendered hr,
+.markdown-source-view .cm-hr {
+  border: none !important;
+  border-top: 1px solid var(--tbl-border) !important;
+  height: 0 !important;
+  background: none !important;
+}
+
+/* ---------- 高亮 ---------- */
+.markdown-rendered mark {
+  background: var(--text-highlight-bg);
+}
+
+/* ---------- 引用块 ---------- */
+/* 阅读模式：只保留文字色，左边框交给 AnuPpuccin 主题 */
+.markdown-rendered blockquote {
+  color: var(--text-muted);
+}
+
+/* 编辑 / 实时预览：禁止对每一行单独画左边框（否则多行 > 会出现多条灰线） */
+.markdown-source-view.mod-cm6 .cm-line.cm-quote,
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  border-left: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* ---------- Callout 内段落间距 ---------- */
+.markdown-rendered .callout-content {
+  --p-spacing: 1em;
+}
+
+/* ---------- 图片自适应 ---------- */
+.markdown-rendered img {
+  max-width: 100%;
+  height: auto;
+}

@@ -1,0 +1,23 @@
+{
+  "showInlineTitle": true,
+  "showLineNumber": true,
+  "readableLineLength": true,
+  "livePreview": true,
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "resource/assets/",
+  "newFileLocation": "root",
+  "newFileFolderPath": "notes",
+  "defaultViewMode": "source",
+  "vimMode": false,
+  "alwaysUpdateLinks": true,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "userIgnoreFilters": [
+    "scripts/"
+  ]
+}
